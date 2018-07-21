@@ -28,7 +28,7 @@
 
             <tbody>
               <tr ng-class="{'bg-warning font-weight-bold': contato.selecionado}" ng-repeat="contato in contatos | filter:busca | orderBy: ordenacao: direcao">
-                <td><input type="checkbox" ng-model="contato.selecionado"/></td>
+                <td><input type="checkbox" ng-model="contato.selecionado" ng-change="checkChanged(contato)" ng-disabled="checked == limit && !contato.selecionado"/></td>
                 <td>{{contato.nome}}</td>
                 <td>{{contato.telefone}}</td>
                 <td>{{contato.operadora.nome}}</td>

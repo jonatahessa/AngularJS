@@ -4,6 +4,8 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
   $scope.app = "Lista Telefonica";
   $scope.contatos = [];
   $scope.operadoras = [];
+  $scope.limit = 2;
+  $scope.checked = 0;
 
 
   var contatos = $http.get('http://localhost:8080/contatos/listar').
@@ -43,4 +45,12 @@ angular.module("listaTelefonica").controller("listaTelefonicaCtrl", function ($s
     $scope.ordenacao = campo;
     $scope.direcao = !$scope.direcao;
   };
+
+  $scope.checkChanged = function(contato){
+    if(contato.selecionado) {
+      $scope.checked++;
+    } else {
+      $scope.checked--;
+    }
+  }
 });
